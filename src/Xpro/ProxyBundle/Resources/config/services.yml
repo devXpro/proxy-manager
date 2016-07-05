@@ -1,0 +1,33 @@
+services:
+# Proxy Parsers
+
+
+    xpro_proxy.parser.registry:
+        class: Xpro\ProxyBundle\Parser\ParserRegistry
+        arguments:
+            - @doctrine
+
+# Providers
+    xpro_proxy.provider.parsing_proxy:
+        class: Xpro\ProxyBundle\Provider\ParsingProxyProvider
+        arguments:
+            - @xpro_proxy.parser.registry
+            - @doctrine
+    xpro_proxy.provider.actual_proxy:
+        class: Xpro\ProxyBundle\Provider\ActualProxyProvider
+        arguments:
+            - @doctrine
+# Processors
+    xpro_proxy.processor.parsing_proxy:
+        class: Xpro\ProxyBundle\Processor\ParsingProxyProcessor
+        arguments:
+            - @xpro_proxy.provider.parsing_proxy
+            - @doctrine
+    xpro_proxy.processor.check_proxy:
+        class: Xpro\ProxyBundle\Processor\CheckProxyProcessor
+        arguments:
+            - @doctrine
+    xpro_proxy.processor.garbage:
+        class: Xpro\ProxyBundle\Processor\GarbageProxyProcessor
+        arguments:
+            - @doctrine

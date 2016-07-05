@@ -1,0 +1,22 @@
+{
+  "name":         "xpro/proxy-manager",
+  "type": "library",
+  "description":  "Symfony bundle for parse, incessantly actualize and provide proxies",
+  "keywords":     ["proxy", "parser","manager","provide"],
+  "homepage":     "https://github.com/devXpro",
+  "license":      "MIT",
+  "authors":      [
+    {
+      "name":     "Roman Yarmolenko",
+      "email":    "devxypro@gmail.com"
+    }
+  ],
+  "require":      {
+    "php":  ">=5.3.0",
+    "symfony/symfony": "2.8.*",
+    "guzzlehttp/guzzle": ">=3.9"
+  },
+  "autoload":     {
+    "psr-4": { "Xpro\\ProxyBundle\\": "src/Xpro/ProxyBundle" }
+  }
+}

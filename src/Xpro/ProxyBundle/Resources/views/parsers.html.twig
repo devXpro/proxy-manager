@@ -1,0 +1,79 @@
+{% macro activity(active) %}
+    {% if active %}
+        <span class="glyphicon glyphicon-ok" style="color: green"></span>
+    {% else %}
+        <span class="glyphicon glyphicon-remove" style="color: red"></span>
+    {% endif %}
+{% endmacro %}
+
+{% macro datetime(date) %}
+    {% if date %}
+        {{ date|date }}
+    {% else %}
+        N\A
+    {% endif %}
+{% endmacro %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        #content {
+            margin-top: 2%;
+        }
+
+    </style>
+</head>
+
+<div id="content">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-5">
+            <h3>Parsers</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Parser Name</th>
+                    <th>Parser Class</th>
+                    <th>Enabled</th>
+                </tr>
+                {% for parser in parsers %}
+                    <tr>
+                        <td>{{ parser.name }}</td>
+                        <td>{{ parser.className }}</td>
+                        <td>
+                            <a href="{{ path('proxy_parser',{toggle_id:parser.id}) }}">{{ _self.activity(parser.enabled) }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <h3>Proxies</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>+</th>
+                    <th>Parser</th>
+                    <th>Ip</th>
+                    <th>Last Activity</th>
+                    <th>Last Update</th>
+                    <th>Added At</th>
+                </tr>
+                {% set id=1 %}
+                {% for proxy in proxies %}
+                    <tr>
+                        <td>{{ id }}</td>
+                        <td>{{ _self.activity(proxy.active) }}</td>
+                        <td>{{ proxy.parser.name }}</td>
+                        <td>{{ proxy.ip }}</td>
+                        <td>{{ _self.datetime(proxy.lastActivity) }}</td>
+                        <td>{{ _self.datetime(proxy.updateAt) }}</td>
+                        <td>{{ _self.datetime(proxy.addedAt) }}</td>
+                    </tr>
+                    {% set id=id+1 %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
