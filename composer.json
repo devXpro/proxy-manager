@@ -21,6 +21,9 @@
     "symfony/symfony": "2.8.*",
     "guzzle/guzzle": "~3.9"
   },
+  "autoload": {
+    "psr-4": { "Xpro\\ProxyBundle\\": "src/Xpro/ProxyBundle" }
+  },
   "minimum-stability": "dev",
   "extra": {
     "branch-alias": {
