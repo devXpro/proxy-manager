@@ -18,7 +18,7 @@
   ],
   "package": {
     "name": "xpro/proxy-manager",
-    "version": "1.0",
+    "version": "dev-maser",
     "source": {
       "url": "git://github.com/devXpro/proxy-manager.git",
       "type": "git",
