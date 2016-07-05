@@ -1,7 +1,7 @@
 {
   "name": "xpro/proxy-manager",
+  "version": "1.0.0",
   "type": "package",
-  "minimum-stability": "stable",
   "description": "Symfony bundle for parse, incessantly actualize and provide proxies",
   "keywords": [
     "proxy",
@@ -21,10 +21,5 @@
     "php": ">=5.3.0",
     "symfony/symfony": "2.8.*",
     "guzzlehttp/guzzle": ">=3.9"
-  },
-  "extra": {
-    "branch-alias": {
-      "stable-master": "1.1"
-    }
   }
 }
