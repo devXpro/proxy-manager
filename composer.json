@@ -1,6 +1,6 @@
 {
   "name": "xpro/proxy-manager",
-  "version": "1.0.0",
+  "version": "1.0-stable",
   "type": "package",
   "description": "Symfony bundle for parse, incessantly actualize and provide proxies",
   "keywords": [
