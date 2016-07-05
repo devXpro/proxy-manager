@@ -18,7 +18,7 @@
   ],
   "package": {
     "name": "xpro/proxy-manager",
-    "version": "dev-master",
+    "version": "1.0",
     "source": {
       "url": "git://github.com/devXpro/proxy-manager.git",
       "type": "git",
