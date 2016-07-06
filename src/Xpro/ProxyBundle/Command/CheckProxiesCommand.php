@@ -3,6 +3,7 @@
 namespace Xpro\ProxyBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -12,7 +13,8 @@ class CheckProxiesCommand extends ContainerAwareCommand
     {
         $this
             ->setName('xpro:proxy:check')
-            ->setDescription('All users processing');
+            ->setDescription('Check proxies')
+            ->addArgument('url', InputArgument::OPTIONAL);
     }
 
     /**
@@ -27,7 +29,11 @@ class CheckProxiesCommand extends ContainerAwareCommand
         $output->writeln('<info>       Start Processing...</info>');
         $this->addLine($output);
         foreach ($proxies as $proxy) {
-            $result = $container->get('xpro_proxy.processor.check_proxy')->process($proxy, 'http://olx.ua', 3);
+            $result = $container->get('xpro_proxy.processor.check_proxy')->process(
+                $proxy,
+                $input->getArgument('url'),
+                3
+            );
             $output->writeln(
                 sprintf(
                     '<info>Proxy <fg=magenta> %s</> from<fg=magenta> %s </>is %s</info>',
