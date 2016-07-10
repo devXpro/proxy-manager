@@ -81,6 +81,6 @@ In services.yml you must define above class as tagged service
 That all! It is all requirements. Nothing code else. We can see result on `your_domain/proxy/parser` route 
 
 ###Add commands for processing
-`xpro:proxy:parse` - this command save new proxies from all enabled parsers in database
-`xpro:proxy:check <url>` - this command check all proxies on <url>, for example `xpro:proxy:check 'http://olx.ua'`
-`xpro:proxy:garbage:clear <deadline>` - this command clear all not available  
+* `xpro:proxy:parse` - this command save new proxies from all enabled parsers in database
+* `xpro:proxy:check <url>` - this command check all proxies on <url>, for example `xpro:proxy:check 'http://olx.ua'`
+* `xpro:proxy:garbage:clear <deadline>` - this command clear all not available proxies in specified time, for example for remove all not available proxies during 1 day run: `xpro:proxy:garbage:clear '1 day'`
