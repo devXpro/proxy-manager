@@ -14,7 +14,7 @@ class CheckProxiesCommand extends ContainerAwareCommand
         $this
             ->setName('xpro:proxy:check')
             ->setDescription('Check proxies')
-            ->addArgument('url', InputArgument::OPTIONAL);
+            ->addArgument('url', InputArgument::REQUIRED);
     }
 
     /**
