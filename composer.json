@@ -18,6 +18,7 @@
   ],
   "require": {
     "php": ">=5.5",
+    "symfony/symfony": "2.8.*",
     "guzzle/guzzle": "~3.9"
   },
   "autoload": {
