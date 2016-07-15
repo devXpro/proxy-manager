@@ -5,7 +5,7 @@
         <span class="glyphicon glyphicon-remove" style="color: red"></span>
     {% endif %}
 {% endmacro %}
-
+{% import _self as proxy_macro %}
 {% macro datetime(date) %}
     {% if date %}
         {{ date|date }}
@@ -40,7 +40,7 @@
                         <td>{{ parser.name }}</td>
                         <td>{{ parser.className }}</td>
                         <td>
-                            <a href="{{ path('proxy_parser',{toggle_id:parser.id}) }}">{{ _self.activity(parser.enabled) }}</a>
+                            <a href="{{ path('proxy_parser',{toggle_id:parser.id}) }}">{{ proxy_macro.activity(parser.enabled) }}</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -64,12 +64,12 @@
                 {% for proxy in proxies %}
                     <tr>
                         <td>{{ id }}</td>
-                        <td>{{ _self.activity(proxy.active) }}</td>
+                        <td>{{ proxy_macro.activity(proxy.active) }}</td>
                         <td>{{ proxy.parser.name }}</td>
                         <td>{{ proxy.ip }}</td>
-                        <td>{{ _self.datetime(proxy.lastActivity) }}</td>
-                        <td>{{ _self.datetime(proxy.updateAt) }}</td>
-                        <td>{{ _self.datetime(proxy.addedAt) }}</td>
+                        <td>{{ proxy_macro.datetime(proxy.lastActivity) }}</td>
+                        <td>{{ proxy_macro.datetime(proxy.updateAt) }}</td>
+                        <td>{{ proxy_macro.datetime(proxy.addedAt) }}</td>
                     </tr>
                     {% set id=id+1 %}
                 {% endfor %}
