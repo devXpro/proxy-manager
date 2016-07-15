@@ -84,3 +84,17 @@ That all! It is all requirements. Nothing code else. We can see result on `your_
 * `xpro:proxy:parse` - this command save new proxies from all enabled parsers in database
 * `xpro:proxy:check <url>` - this command check all proxies on <url>, for example `xpro:proxy:check 'http://olx.ua'`
 * `xpro:proxy:garbage:clear <deadline>` - this command clear all not available proxies in specified time, for example for remove all not available proxies during 1 day run: `xpro:proxy:garbage:clear '1 day'`
+
+###Add commands into crontab
+```
+*/5 * * * *     root    /var/www/postinformer/app/console xpro:proxy:parse
+*/5 * * * *     root    /var/www/postinformer/app/console xpro:proxy:check 'http://olx.ua'
+1 */1 * * *     root    /var/www/postinformer/app/console xpro:proxy:garbage:clear '1 hour'
+```
+
+### Proxy Management 
+You can browse proxies list, observe activity of it and enable or disable your implemented parsers from UI.
+Just visit `<your_domain>/proxy/parser` route 
+
+###Access to actual proxies
+In your bundle for receipt last active proxies you can use `xpro_proxy.provider.actual_proxy` service and use `getActualProxy()` method if you need only one proxy address or `getActualProxies($limit)` if you need more one actual proxies.
